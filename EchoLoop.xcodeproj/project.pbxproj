@@ -52,6 +52,7 @@
 		97F2D5F547C5D2E4004B594F /* EchoLoopLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DB142AFDDC037E25483410D /* EchoLoopLaunchTests.swift */; };
 		98DB45C4C598A079B0D358E6 /* AchievementsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7996E886112EDC77831DC65B /* AchievementsView.swift */; };
 		9F9C17CA5CC84D45080B2755 /* AppLaunchEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CA8DD67C0925E73C2F266C /* AppLaunchEnvironment.swift */; };
+		A10000000000000000000001 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000011 /* GoogleMobileAds */; };
 		A398E29462224EEEE0832550 /* AdaptiveQualityControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5F108D35B14A0BDD0386E5B /* AdaptiveQualityControllerTests.swift */; };
 		A4CE455C23A294EE5A98780D /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A69AED46FC5001D592664B9 /* AppConfig.swift */; };
 		AA8C4C94728FBA1ECC6845B3 /* EchoScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D09136DDB007B57BC23CC23 /* EchoScene.swift */; };
@@ -76,7 +77,6 @@
 		F2764FE857901FB0A95CFAF9 /* AnalyticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C291216411E0F513E0F83C79 /* AnalyticsManager.swift */; };
 		F27F144782700B062FAFDFA3 /* SceneComplexityPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DF7F5AD9ED4186F2B80826 /* SceneComplexityPolicy.swift */; };
 		F8F56C420EDF069742129723 /* Cosmetics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C672EE2A252C8807E8AECC /* Cosmetics.swift */; };
-		A10000000000000000000001 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000011 /* GoogleMobileAds */; };
 		FA964901B1224556A10004E0 /* GameRulesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91029842D2C33247CC815AD5 /* GameRulesTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -150,7 +150,7 @@
 		9E3E5BD68A8FCDAF301B6B94 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		A5F0C11D58B44C1782E80F20 /* VisualEffectsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectsFactory.swift; sourceTree = "<group>"; };
 		A7717308D07E5318330F065C /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		AEF63687048485D45524643C /* EchoLoop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EchoLoop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AEF63687048485D45524643C /* EchoLoop Challenge.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EchoLoop Challenge.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B19D61F8A79AAE7F8A40B295 /* CoinBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinBadge.swift; sourceTree = "<group>"; };
 		B3EE5670AFCD2471EFACAB5C /* SeasonProgression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeasonProgression.swift; sourceTree = "<group>"; };
 		B81FFE2162BDA678562FBB6E /* dash.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dash.wav; sourceTree = "<group>"; };
@@ -205,7 +205,7 @@
 		021F2B7F3E0C61452C987484 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				AEF63687048485D45524643C /* EchoLoop.app */,
+				AEF63687048485D45524643C /* EchoLoop Challenge.app */,
 				92B5D8DB34D35EC68E2C1C62 /* EchoLoopTests.xctest */,
 				57541F8E2CD4971E88B9C720 /* EchoLoopUITests.xctest */,
 			);
@@ -439,7 +439,7 @@
 				A10000000000000000000011 /* GoogleMobileAds */,
 			);
 			productName = EchoLoop;
-			productReference = AEF63687048485D45524643C /* EchoLoop.app */;
+			productReference = AEF63687048485D45524643C /* EchoLoop Challenge.app */;
 			productType = "com.apple.product-type.application";
 		};
 		53FDC137CBD6F65AC0797F43 /* EchoLoopTests */ = {
@@ -647,25 +647,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		A10000000000000000000010 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 13.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A10000000000000000000011 /* GoogleMobileAds */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A10000000000000000000010 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
-			productName = GoogleMobileAds;
-		};
-/* End XCSwiftPackageProductDependency section */
-
 /* Begin PBXTargetDependency section */
 		2DBC1EC5A3594226EBB55393 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -749,7 +730,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameter.echoloop;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "EchoLoop Challenge";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -846,7 +827,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sameter.echoloop;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "EchoLoop Challenge";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -961,6 +942,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A10000000000000000000010 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 13.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A10000000000000000000011 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A10000000000000000000010 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 98F54143AB4E86B28C3AFEE0 /* Project object */;
 }
