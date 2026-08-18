@@ -1,0 +1,33 @@
+{
+  "adMob": {
+    "appID": "ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY",
+    "banner": "ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB",
+    "interstitial": "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",
+    "rewarded": "ca-app-pub-XXXXXXXXXXXXXXXX/RRRRRRRRRR"
+  },
+  "gameCenter": {
+    "leaderboardID": "grp.echoloop.longest_run",
+    "achievements": {
+      "survive60": "grp.echoloop.survive60",
+      "survive120": "grp.echoloop.survive120",
+      "echoes10": "grp.echoloop.echoes10",
+      "closeCalls15": "grp.echoloop.closecalls15",
+      "stage6": "grp.echoloop.stage6",
+      "shards100": "grp.echoloop.shards100",
+      "dashes100": "grp.echoloop.dashes100",
+      "specialEchoes50": "grp.echoloop.specialechoes50",
+      "arenaEvents25": "grp.echoloop.arenaevents25",
+      "bossEncounters10": "grp.echoloop.boss10"
+    }
+  },
+  "cloud": {
+    "enabled": false,
+    "containerIdentifier": "iCloud.com.sameter.echoloop"
+  },
+  "storefront": {
+    "supportURL": "https://example.com/echo-loop/support",
+    "privacyPolicyURL": "https://example.com/echo-loop/privacy",
+    "supportEmail": "support@example.com",
+    "copyrightOwner": "Your Legal Name or Company"
+  }
+}

@@ -1,0 +1,27 @@
+# Xcode user state
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+
+# Build output
+DerivedData/
+build/
+*.ipa
+*.dSYM.zip
+*.xcarchive
+
+# Swift Package Manager local state
+.swiftpm/
+.build/
+
+# macOS
+.DS_Store
+
+# Local/private config if added later
+Local.xcconfig
+Secrets.xcconfig
+
+# Release credentials and local production config
+ProductionConfig.json
+private_keys/

@@ -1,0 +1,19 @@
+ECHO LOOP APP STORE SUBMISSION PREFLIGHT: BLOCKED
+=================================================
+[BLOCK] Binary release preflight is not passing.
+ECHO LOOP V10 RELEASE PREFLIGHT: BLOCKED
+==========================================
+[BLOCK] Google official TEST AdMob IDs are still configured.
+[BLOCK] Production Game Center placeholders remain: CHANGE_ME_ARENA_EVENTS_25, CHANGE_ME_BOSS_ENCOUNTERS_10, CHANGE_ME_CLOSE_CALLS_15, CHANGE_ME_DASHES_100, CHANGE_ME_ECHOES_10, CHANGE_ME_ECHO_LONGEST_RUN, CHANGE_ME_SHARDS_100, CHANGE_ME_SPECIAL_ECHOES_50, CHANGE_ME_STAGE_6, CHANGE_ME_SURVIVE_120, CHANGE_ME_SURVIVE_60
+
+Apply a real ProductionConfig.json, verify Apple capabilities, then rerun this command.
+[BLOCK] en-US.json: supportURL is not a production HTTPS URL
+[BLOCK] en-US.json: privacyPolicyURL is not a production HTTPS URL
+[BLOCK] en-US.json: copyright owner is unresolved
+[BLOCK] tr-TR.json: supportURL is not a production HTTPS URL
+[BLOCK] tr-TR.json: privacyPolicyURL is not a production HTTPS URL
+[BLOCK] tr-TR.json: copyright owner is unresolved
+[BLOCK] privacy.html: support email placeholder remains
+[BLOCK] support.html: support email placeholder remains
+[BLOCK] No final iphone69 PNG screenshots in AppStore/screenshots/iphone69/
+[BLOCK] No final ipad13 PNG screenshots in AppStore/screenshots/ipad13/
