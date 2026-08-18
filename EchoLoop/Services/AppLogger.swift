@@ -8,7 +8,6 @@ enum AppLogger {
     static let gameplay = Logger(subsystem: subsystem, category: "Gameplay")
     static let persistence = Logger(subsystem: subsystem, category: "Persistence")
     static let ads = Logger(subsystem: subsystem, category: "Ads")
-    static let store = Logger(subsystem: subsystem, category: "StoreKit")
     static let gameCenter = Logger(subsystem: subsystem, category: "GameCenter")
     static let audio = Logger(subsystem: subsystem, category: "Audio")
     static let privacy = Logger(subsystem: subsystem, category: "Privacy")

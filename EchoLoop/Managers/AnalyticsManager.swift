@@ -11,7 +11,6 @@ final class AnalyticsManager {
         case runCompleted = "run_completed"
         case reviveUsed = "revive_used"
         case shopOpened = "shop_opened"
-        case purchaseCompleted = "purchase_completed"
         case dailyRewardClaimed = "daily_reward_claimed"
         case missionClaimed = "mission_claimed"
         case arenaEventStarted = "arena_event_started"

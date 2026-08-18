@@ -10,10 +10,8 @@ enum AppConfig {
     enum Runtime {
         static let isUITesting = ProcessInfo.processInfo.arguments.contains("--ui-testing")
         #if DEBUG
-        static let allowTestAds = true
         static let diagnosticsEnabled = true
         #else
-        static let allowTestAds = false
         static let diagnosticsEnabled = false
         #endif
     }
@@ -73,21 +71,8 @@ enum AppConfig {
         }
     }
 
-    enum Store {
-        static let removeAds = "com.sameter.echoloop.removeads"
-        static let premiumNeon = "com.sameter.echoloop.premiumneon"
-        static let productIDs: Set<String> = [removeAds, premiumNeon]
-    }
-
     enum AdMob {
-        // Official Google iOS TEST IDs. Replace with production IDs before App Store release.
-        static let appID = "ca-app-pub-3940256099942544~1458002511"
-        static let banner = "ca-app-pub-3940256099942544/2435281174"
-        static let interstitial = "ca-app-pub-3940256099942544/4411468910"
-        static let rewarded = "ca-app-pub-3940256099942544/1712485313"
-
-        static var isTestConfiguration: Bool {
-            appID == "ca-app-pub-3940256099942544~1458002511"
-        }
+        static let appID = "ca-app-pub-3321006469806168~5262008450"
+        static let banner = "ca-app-pub-3321006469806168/8310843623"
     }
 }

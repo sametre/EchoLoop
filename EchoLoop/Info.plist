@@ -34,7 +34,7 @@
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>GADApplicationIdentifier</key>
-	<string>ca-app-pub-3940256099942544~1458002511</string>
+	<string>ca-app-pub-3321006469806168~5262008450</string>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>We use device identifiers, with your permission, to improve ad relevance and measure ad performance.</string>
 	<key>SKAdNetworkItems</key>

@@ -17,17 +17,6 @@ enum ConfigurationValidator {
     static var issues: [ConfigurationIssue] {
         var result: [ConfigurationIssue] = []
 
-        if AppConfig.AdMob.isTestConfiguration {
-            result.append(.init(
-                id: "admob-test",
-                severity: AppConfig.Runtime.allowTestAds ? .info : .blocking,
-                title: "AdMob test configuration",
-                detail: AppConfig.Runtime.allowTestAds
-                    ? "Official Google test ad IDs are active for this DEBUG build."
-                    : "Release builds refuse to initialize ads while Google test IDs are configured."
-            ))
-        }
-
         if AppConfig.Game.leaderboardID.contains("CHANGE_ME") {
             result.append(.init(
                 id: "leaderboard-placeholder",
@@ -76,15 +65,6 @@ enum ConfigurationValidator {
             ))
         }
 
-        if !AppConfig.Store.productIDs.allSatisfy({ $0.hasPrefix(AppConfig.bundleIdentifier) }) {
-            result.append(.init(
-                id: "store-product-prefix",
-                severity: .warning,
-                title: "StoreKit product ID prefix mismatch",
-                detail: "Keep product IDs namespaced under the app bundle identifier to avoid configuration mistakes."
-            ))
-        }
-
         return result
     }
 
@@ -93,6 +73,6 @@ enum ConfigurationValidator {
     }
 
     static var adsMayStart: Bool {
-        !AppConfig.AdMob.isTestConfiguration || AppConfig.Runtime.allowTestAds
+        true
     }
 }

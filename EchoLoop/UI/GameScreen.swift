@@ -3,8 +3,6 @@ import SpriteKit
 
 struct GameScreen: View {
     @ObservedObject var session: GameSession
-    @ObservedObject private var ads = AdManager.shared
-    @ObservedObject private var store = StoreManager.shared
     @ObservedObject private var settings = SettingsStore.shared
     @State private var scene: EchoScene
     @State private var adRegisteredForRun = false
@@ -265,15 +263,10 @@ struct GameScreen: View {
                     rewardCard
 
                     if session.canRevive {
-                        Button {
-                            ads.showRewardedRevive { success in
-                                if success { session.revive() }
-                            }
-                        } label: {
+                        Button { session.revive() } label: {
                             Label(reviveLabel, systemImage: "heart.fill")
                         }
                         .buttonStyle(NeonButtonStyle(tint: .pink))
-                        .disabled(!store.adsRemoved && !ads.rewardedReady)
                     }
 
                     Button("RETRY") { transitionToRetry() }
@@ -316,10 +309,7 @@ struct GameScreen: View {
         .background(.white.opacity(0.05), in: RoundedRectangle(cornerRadius: 18))
     }
 
-    private var reviveLabel: String {
-        if store.adsRemoved { return "FREE REVIVE" }
-        return ads.rewardedReady ? "WATCH AD & REVIVE" : "REVIVE AD LOADING…"
-    }
+    private var reviveLabel: String { "FREE REVIVE" }
 
     private func beginCountdown() {
         let token = UUID()
@@ -369,7 +359,6 @@ struct GameScreen: View {
         _ = session.commitRun()
         guard wasGameOver, !adRegisteredForRun else { return }
         adRegisteredForRun = true
-        ads.registerCompletedRun()
     }
 
     private func stat(_ title: String, _ value: String) -> some View {

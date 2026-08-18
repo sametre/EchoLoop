@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct MainMenuView: View {
-    @ObservedObject var store: StoreManager
     @ObservedObject var profile: PlayerProfile
     @ObservedObject private var privacy = PrivacyConsentManager.shared
     @ObservedObject private var ads = AdManager.shared
@@ -32,7 +31,7 @@ struct MainMenuView: View {
                     if profile.dailyRewardAvailable { dailyRewardCard }
                     runSummary
 
-                    if !store.adsRemoved && privacy.canRequestAds && ads.isStarted && ConfigurationValidator.adsMayStart {
+                    if privacy.canRequestAds && ads.isStarted && ConfigurationValidator.adsMayStart {
                         GeometryReader { geometry in
                             AdaptiveBannerView(width: min(geometry.size.width - 32, 420))
                                 .frame(maxWidth: .infinity)

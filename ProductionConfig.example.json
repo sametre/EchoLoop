@@ -1,9 +1,7 @@
 {
   "adMob": {
-    "appID": "ca-app-pub-XXXXXXXXXXXXXXXX~YYYYYYYYYY",
-    "banner": "ca-app-pub-XXXXXXXXXXXXXXXX/BBBBBBBBBB",
-    "interstitial": "ca-app-pub-XXXXXXXXXXXXXXXX/IIIIIIIIII",
-    "rewarded": "ca-app-pub-XXXXXXXXXXXXXXXX/RRRRRRRRRR"
+    "appID": "ca-app-pub-3321006469806168~5262008450",
+    "banner": "ca-app-pub-3321006469806168/8310843623"
   },
   "gameCenter": {
     "leaderboardID": "grp.echoloop.longest_run",

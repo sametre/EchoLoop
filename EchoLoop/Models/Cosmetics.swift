@@ -20,7 +20,7 @@ struct OrbCosmetic: Identifiable, Hashable {
         .init(id: "mint", name: "MINT", price: 500, premiumOnly: false, primaryHex: "7CFFD1", secondaryHex: "42C6FF"),
         .init(id: "solar", name: "SOLAR", price: 700, premiumOnly: false, primaryHex: "FFD764", secondaryHex: "FF7A45"),
         .init(id: "void", name: "VOID", price: 900, premiumOnly: false, primaryHex: "C48BFF", secondaryHex: "5940FF"),
-        .init(id: "prism", name: "PRISM", price: 0, premiumOnly: true, primaryHex: "FFFFFF", secondaryHex: "FF54DA")
+        .init(id: "prism", name: "PRISM", price: 1100, premiumOnly: false, primaryHex: "FFFFFF", secondaryHex: "FF54DA")
     ]
 
     static func item(_ id: String) -> OrbCosmetic { all.first(where: { $0.id == id }) ?? all[0] }
@@ -44,7 +44,7 @@ struct TrailCosmetic: Identifiable, Hashable {
         .init(id: "lime", name: "LIME", price: 400, premiumOnly: false, hex: "79FF8E", birthRate: 68, lifetime: 0.45),
         .init(id: "ember", name: "EMBER", price: 550, premiumOnly: false, hex: "FF8B4D", birthRate: 72, lifetime: 0.52),
         .init(id: "ultraviolet", name: "ULTRAVIOLET", price: 750, premiumOnly: false, hex: "A765FF", birthRate: 76, lifetime: 0.56),
-        .init(id: "nova", name: "NOVA", price: 0, premiumOnly: true, hex: "FFF4A8", birthRate: 90, lifetime: 0.62)
+        .init(id: "nova", name: "NOVA", price: 950, premiumOnly: false, hex: "FFF4A8", birthRate: 90, lifetime: 0.62)
     ]
 
     static func item(_ id: String) -> TrailCosmetic { all.first(where: { $0.id == id }) ?? all[0] }
@@ -72,7 +72,7 @@ struct ArenaCosmetic: Identifiable, Hashable {
         .init(id: "emerald", name: "EMERALD", price: 850, premiumOnly: false, backgroundHex: "03100D", accentHex: "5DFFB4", glowHex: "00B8A9"),
         .init(id: "solar", name: "SOLAR CORE", price: 1050, premiumOnly: false, backgroundHex: "100806", accentHex: "FFC552", glowHex: "FF5C45"),
         .init(id: "royal", name: "ROYAL VOID", price: 1250, premiumOnly: false, backgroundHex: "080313", accentHex: "A86BFF", glowHex: "5A48FF"),
-        .init(id: "singularity", name: "SINGULARITY", price: 0, premiumOnly: true, backgroundHex: "05050A", accentHex: "FFFFFF", glowHex: "FF62DA")
+        .init(id: "singularity", name: "SINGULARITY", price: 1500, premiumOnly: false, backgroundHex: "05050A", accentHex: "FFFFFF", glowHex: "FF62DA")
     ]
 
     static func item(_ id: String) -> ArenaCosmetic { all.first(where: { $0.id == id }) ?? all[0] }

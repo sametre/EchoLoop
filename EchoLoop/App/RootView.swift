@@ -14,7 +14,6 @@ enum AppRoute {
 struct RootView: View {
     @Environment(\.scenePhase) private var scenePhase
     @StateObject private var session = GameSession()
-    @ObservedObject private var store = StoreManager.shared
     @ObservedObject private var profile = PlayerProfile.shared
     @ObservedObject private var settingsStore = SettingsStore.shared
     @State private var route: AppRoute = .menu
@@ -48,7 +47,6 @@ struct RootView: View {
         switch route {
         case .menu:
             MainMenuView(
-                store: store,
                 profile: profile,
                 play: { startGame() },
                 shop: {
@@ -65,7 +63,7 @@ struct RootView: View {
         case .game:
             GameScreen(session: session, home: { route = .menu })
         case .shop:
-            ShopView(store: store, profile: profile, close: { route = .menu })
+            ShopView(profile: profile, close: { route = .menu })
         case .settings:
             SettingsView(close: { route = .menu })
         case .challenges:

@@ -1,16 +1,13 @@
 import SwiftUI
-import StoreKit
 
 enum ShopTab: String, CaseIterable, Identifiable {
     case orbs = "ORBS"
     case trails = "TRAILS"
     case arenas = "ARENAS"
-    case premium = "PREMIUM"
     var id: String { rawValue }
 }
 
 struct ShopView: View {
-    @ObservedObject var store: StoreManager
     @ObservedObject var profile: PlayerProfile
     let close: () -> Void
     @State private var tab: ShopTab = .orbs
@@ -33,7 +30,6 @@ struct ShopView: View {
                     case .orbs: orbGrid
                     case .trails: trailGrid
                     case .arenas: arenaGrid
-                    case .premium: premiumSection
                     }
                 }
                 .padding(20)
@@ -76,7 +72,7 @@ struct ShopView: View {
     }
 
     private func orbCard(_ item: OrbCosmetic) -> some View {
-        let owned = profile.ownsOrb(item) || (item.premiumOnly && store.premiumUnlocked)
+        let owned = profile.ownsOrb(item)
         let selected = profile.selectedOrb.id == item.id
         return cosmeticCard(
             title: item.name,
@@ -91,15 +87,14 @@ struct ShopView: View {
                 }
             ),
             action: {
-                if item.premiumOnly && !store.premiumUnlocked { tab = .premium }
-                else if owned { profile.selectOrb(item, premiumUnlocked: store.premiumUnlocked) }
+                if owned { profile.selectOrb(item, premiumUnlocked: false) }
                 else { _ = profile.buyOrb(item) }
             }
         )
     }
 
     private func trailCard(_ item: TrailCosmetic) -> some View {
-        let owned = profile.ownsTrail(item) || (item.premiumOnly && store.premiumUnlocked)
+        let owned = profile.ownsTrail(item)
         let selected = profile.selectedTrail.id == item.id
         return cosmeticCard(
             title: item.name,
@@ -117,15 +112,14 @@ struct ShopView: View {
                 .frame(height: 70)
             ),
             action: {
-                if item.premiumOnly && !store.premiumUnlocked { tab = .premium }
-                else if owned { profile.selectTrail(item, premiumUnlocked: store.premiumUnlocked) }
+                if owned { profile.selectTrail(item, premiumUnlocked: false) }
                 else { _ = profile.buyTrail(item) }
             }
         )
     }
 
     private func arenaCard(_ item: ArenaCosmetic) -> some View {
-        let owned = profile.ownsArena(item) || (item.premiumOnly && store.premiumUnlocked)
+        let owned = profile.ownsArena(item)
         let selected = profile.selectedArena.id == item.id
         return cosmeticCard(
             title: item.name,
@@ -141,8 +135,7 @@ struct ShopView: View {
                 }
             ),
             action: {
-                if item.premiumOnly && !store.premiumUnlocked { tab = .premium }
-                else if owned { profile.selectArena(item, premiumUnlocked: store.premiumUnlocked) }
+                if owned { profile.selectArena(item, premiumUnlocked: false) }
                 else { _ = profile.buyArena(item) }
             }
         )
@@ -164,8 +157,6 @@ struct ShopView: View {
                 Button(action: action) {
                     if selected {
                         Label("EQUIPPED", systemImage: "checkmark.circle.fill")
-                    } else if premiumOnly && !store.premiumUnlocked {
-                        Label("PREMIUM", systemImage: "crown.fill")
                     } else if owned {
                         Text("EQUIP")
                     } else {
@@ -175,67 +166,11 @@ struct ShopView: View {
                         }
                     }
                 }
-                .buttonStyle(NeonButtonStyle(tint: selected ? .green : (premiumOnly ? .purple : .cyan), compact: true))
+                .buttonStyle(NeonButtonStyle(tint: selected ? .green : .cyan, compact: true))
                 .disabled(selected)
             }
             .frame(maxWidth: .infinity)
         }
     }
 
-    private var premiumSection: some View {
-        VStack(spacing: 14) {
-            GlassCard {
-                VStack(alignment: .leading, spacing: 12) {
-                    Label("PREMIUM NEON PACK", systemImage: "crown.fill").font(.headline).foregroundStyle(.yellow)
-                    Text("Unlock PRISM orb, NOVA trail and SINGULARITY arena. Gameplay remains identical for every player.")
-                        .font(.subheadline).foregroundStyle(.white.opacity(0.65))
-                    HStack(spacing: 18) {
-                        Circle().fill(OrbCosmetic.item("prism").primaryColor).frame(width: 28, height: 28).shadow(color: .pink, radius: 12)
-                        Image(systemName: "scribble.variable").foregroundStyle(TrailCosmetic.item("nova").color)
-                        Circle().stroke(ArenaCosmetic.item("singularity").accentColor, lineWidth: 2).frame(width: 34, height: 34)
-                    }
-                }
-            }
-
-            if store.products.isEmpty {
-                GlassCard {
-                    VStack(spacing: 10) {
-                        ProgressView().tint(.cyan)
-                        Text("StoreKit products are not available in this build environment yet. Create the product IDs from AppConfig.swift in App Store Connect to test real purchases.")
-                            .font(.footnote).foregroundStyle(.white.opacity(0.62)).multilineTextAlignment(.center)
-                    }
-                }
-            } else {
-                ForEach(store.products, id: \.id) { product in productCard(product) }
-            }
-
-            Button("RESTORE PURCHASES") { Task { await store.restore() } }
-                .buttonStyle(NeonButtonStyle(tint: .purple))
-
-            if let error = store.lastError {
-                Text(error).font(.caption).foregroundStyle(.red).multilineTextAlignment(.center)
-            }
-        }
-    }
-
-    private func productCard(_ product: Product) -> some View {
-        let owned = store.purchasedIDs.contains(product.id)
-        return GlassCard {
-            VStack(alignment: .leading, spacing: 12) {
-                HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(product.displayName).font(.headline)
-                        Text(product.description).font(.caption).foregroundStyle(.white.opacity(0.6))
-                    }
-                    Spacer()
-                    Text(product.displayPrice).font(.headline).foregroundStyle(.yellow)
-                }
-                Button(owned ? "OWNED" : "BUY") {
-                    if !owned { Task { await store.purchase(product) } }
-                }
-                .buttonStyle(NeonButtonStyle(tint: owned ? .green : .pink))
-                .disabled(owned)
-            }
-        }
-    }
 }
