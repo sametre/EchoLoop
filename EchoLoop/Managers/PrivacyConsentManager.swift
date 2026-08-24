@@ -27,7 +27,9 @@ final class PrivacyConsentManager: ObservableObject {
             ConsentInformation.shared.requestConsentInfoUpdate(with: parameters) { [weak self] error in
                 Task { @MainActor in
                     if let error {
-                        self?.lastError = error.localizedDescription
+                        // Consent setup is controlled in AdMob. Keep this diagnostic out of
+                        // the player UI; ads remain gated by UMP's canRequestAds state below.
+                        self?.lastError = nil
                         AppLogger.privacy.error("Consent info update failed: \(error.localizedDescription, privacy: .public)")
                     }
                     self?.refreshState()
@@ -39,7 +41,7 @@ final class PrivacyConsentManager: ObservableObject {
         do {
             try await ConsentForm.loadAndPresentIfRequired(from: nil)
         } catch {
-            lastError = error.localizedDescription
+            lastError = nil
             AppLogger.privacy.error("Consent form failed: \(error.localizedDescription, privacy: .public)")
         }
 

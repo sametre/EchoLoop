@@ -74,5 +74,10 @@ enum AppConfig {
     enum AdMob {
         static let appID = "ca-app-pub-3321006469806168~5262008450"
         static let banner = "ca-app-pub-3321006469806168/8310843623"
+
+        static var isConfigured: Bool {
+            appID.range(of: #"^ca-app-pub-\d{16}~\d{10}$"#, options: .regularExpression) != nil &&
+            banner.range(of: #"^ca-app-pub-\d{16}/\d{10}$"#, options: .regularExpression) != nil
+        }
     }
 }

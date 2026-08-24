@@ -25,9 +25,6 @@ struct ChallengesView: View {
                         challengeCard(challenge)
                     }
 
-                    Text("Daily missions are stored locally in this build. Cloud sync can be enabled with iCloud later.")
-                        .font(.caption2).foregroundStyle(.white.opacity(0.38)).multilineTextAlignment(.center)
-                        .padding(.top, 8)
                 }
                 .padding(20)
             }
@@ -52,7 +49,7 @@ struct ChallengesView: View {
 
         return GlassCard {
             VStack(alignment: .leading, spacing: 14) {
-                HStack(spacing: 12) {
+                HStack(alignment: .center, spacing: 12) {
                     Image(systemName: challenge.symbol)
                         .font(.title2).foregroundStyle(ready ? .yellow : .cyan)
                         .frame(width: 42, height: 42)
@@ -66,6 +63,7 @@ struct ChallengesView: View {
                         Image(systemName: "hexagon.fill").foregroundStyle(.yellow)
                         Text("\(challenge.reward)").font(.subheadline.bold())
                     }
+                    .frame(width: 92, alignment: .trailing)
                 }
 
                 ProgressView(value: Double(progress), total: Double(challenge.target))

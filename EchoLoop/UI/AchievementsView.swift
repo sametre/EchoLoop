@@ -3,7 +3,6 @@ import SwiftUI
 struct AchievementsView: View {
     @ObservedObject var profile: PlayerProfile
     @ObservedObject private var gameCenter = GameCenterManager.shared
-    @ObservedObject private var cloud = CloudSyncManager.shared
     let close: () -> Void
 
     private var completedCount: Int {
@@ -17,8 +16,6 @@ struct AchievementsView: View {
                 VStack(spacing: 16) {
                     header
                     summary
-                    cloudCard
-
                     LazyVStack(spacing: 12) {
                         ForEach(AchievementCatalog.all) { achievement in
                             achievementCard(achievement)
@@ -79,31 +76,6 @@ struct AchievementsView: View {
         }
     }
 
-    private var cloudCard: some View {
-        GlassCard {
-            HStack(spacing: 12) {
-                Image(systemName: cloudIcon)
-                    .foregroundStyle(cloudColor)
-                    .font(.title3)
-                VStack(alignment: .leading, spacing: 3) {
-                    Text("ICLOUD SYNC").font(.caption.bold()).foregroundStyle(.white.opacity(0.5))
-                    Text(LocalizedStringKey(cloudStatus)).font(.subheadline.weight(.semibold))
-                    if let date = cloud.lastSyncDate {
-                        Text(date.formatted(date: .omitted, time: .shortened))
-                            .font(.caption2).foregroundStyle(.white.opacity(0.45))
-                    }
-                }
-                Spacer()
-                if cloud.isConfigured {
-                    Button("SYNC") { cloud.syncNow() }
-                        .buttonStyle(NeonButtonStyle(tint: .cyan, compact: true))
-                        .frame(width: 88)
-                        .disabled(cloud.state == .syncing)
-                }
-            }
-        }
-    }
-
     private func achievementCard(_ achievement: AchievementDefinition) -> some View {
         let progress = achievement.progress(using: profile.achievementSnapshot)
         let complete = progress >= 1
@@ -135,32 +107,4 @@ struct AchievementsView: View {
         .accessibilityIdentifier("achievement.\(achievement.id)")
     }
 
-    private var cloudStatus: String {
-        switch cloud.state {
-        case .disabled: return "READY TO CONFIGURE"
-        case .checkingAccount: return "CHECKING ICLOUD"
-        case .ready: return "SYNC READY"
-        case .syncing: return "SYNCING"
-        case .unavailable: return "ICLOUD UNAVAILABLE"
-        case .failed: return "SYNC FAILED"
-        }
-    }
-
-    private var cloudIcon: String {
-        switch cloud.state {
-        case .ready: return "icloud.fill"
-        case .syncing: return "icloud.and.arrow.up.fill"
-        case .failed, .unavailable: return "icloud.slash.fill"
-        default: return "icloud"
-        }
-    }
-
-    private var cloudColor: Color {
-        switch cloud.state {
-        case .ready: return .cyan
-        case .syncing: return .blue
-        case .failed, .unavailable: return .orange
-        default: return .white.opacity(0.55)
-        }
-    }
 }

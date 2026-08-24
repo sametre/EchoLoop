@@ -73,6 +73,6 @@ enum ConfigurationValidator {
     }
 
     static var adsMayStart: Bool {
-        true
+        AppConfig.AdMob.isConfigured
     }
 }
